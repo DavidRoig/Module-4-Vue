@@ -2,14 +2,15 @@
   <section>
     <ul>
       <li v-for="member in memberList" :key="member.id">
-        {{ member.name }}
+        {{ member.login }}
+        {{ member.avatar_url }}
       </li>
     </ul>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
+import { defineComponent, PropType, computed } from "vue";
 import { Member } from "@/types";
 
 export default defineComponent({
@@ -20,7 +21,8 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const memberList = ref(props.members);
+    const memberList = computed(() => props.members);
+
     return { memberList };
   },
 });

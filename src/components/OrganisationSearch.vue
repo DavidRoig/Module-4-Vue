@@ -9,10 +9,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, Ref } from "vue";
+import { AppConstants } from "@/constants/appConstants";
 
 export default defineComponent({
   setup(props, { emit }) {
-    const organisationFilter: Ref<string> = ref("");
+    const organisationFilter: Ref<string> = ref(
+      AppConstants.defaultOrganisation
+    );
 
     const loadMemberHandler = () => {
       emit("load-member", organisationFilter.value);
